@@ -31,13 +31,13 @@
 
 <div>
 
-	Welcome to the sentiment analysis tool. Every day the following data is updated to reflect how the following companys are perceived at the current date. We gather the data by querying twitter and applying a sentiment analysis algorithm.
+	Welcome to the sentiment analysis tool. Below, you can type in any company name and see the current sentiment analysis of the past 1000 tweets refering the that company. The sentiment analysis is calculated by a custom machine learning algorithm. once you search values will be calculated within 30 seconds.
 
 </div>
 <form action='' method='get'>
 
   <input name="searchWord" class="form-control" placeholder="Enter Company Name">
-  <button type="submit">Search</button> 
+  <button class="btn btn-dark" type="submit">Search</button> 
 </form>
 
 <?php
