@@ -34,12 +34,23 @@
 	Welcome to the sentiment analysis tool. Every day the following data is updated to reflect how the following companys are perceived at the current date. We gather the data by querying twitter and applying a sentiment analysis algorithm.
 
 </div>
+<form action='' method='get'>
+
+  <input name="searchWord" class="form-control" placeholder="Enter Company Name">
+  <button type="submit">Search</button> 
+</form>
 
 <?php
-$command = escapeshellcmd('python3 TestNB.py tacobell 100');
-$output = shell_exec($command);
-echo '<div>'.$output.'</div>';
+
+if (isset($_GET["searchWord"])) {
+  $command = escapeshellcmd('python3 TestNB.py '.$_GET["searchWord"].' 100');
+  $output = shell_exec($command);
+  echo '<div>'.$output.'</div>';
+}
+
 ?>
+
+
 	
 </body>
 </html>
