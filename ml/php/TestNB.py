@@ -1,13 +1,10 @@
-import nltk
 import re
 from nltk.tokenize import word_tokenize
 from string import punctuation
 from nltk.corpus import stopwords
 import pandas as pd
 import tweepy as tw
-import os
 import pickle
-import sys
 
 '''
 DON'T TOUCH
@@ -67,12 +64,12 @@ def get_tweets(search_words, count=10):
     return [[tweet.full_text, None] for tweet in tweets]
 
 
-query = sys.argv[1]
-count = int(sys.argv[2])
+query = input("Enter your search: ")
+count = int(input("How many tweets? "))
 testData = get_tweets(query, count)  # returns a list of text
 # check tweets
-#for tweet in testData:
-    #print(tweet, "\n")
+for tweet in testData:
+    print(tweet, "\n")
 dfTest = pd.DataFrame(testData, columns=['Tweets', "Label"])  # sanitize uses pandas
 tweetSanitizer = SanitizeTweets()
 sanitizedTest = tweetSanitizer.processTweets(dfTest)
@@ -89,8 +86,7 @@ wordFeatures = wordlist.keys()
 
 NBResult = [classifier.classify(extractFeatures(tweet[0])) for tweet in sanitizedTest]
 
-print("<h1 style='margin-top=5%'>Overall Positive Sentiment</h1><br>")
-print("<li class='list-group-item'>Positive Sentiment Percentage = " + str(100 * NBResult.count('positive') / len(NBResult)) + "%</li><br>")
-print("<li class='list-group-item'>Negative Sentiment Percentage = " + str(100 * NBResult.count('negative') / len(NBResult)) + "%</li><br>")
-print("<li class='list-group-item'>Irrelevant percentage = " + str(100 * NBResult.count('irrelevant') / len(NBResult)) + "%</li><br>")
-print("<li class='list-group-item'>Neutral percentage = " + str(100 * NBResult.count('neutral') / len(NBResult)) + "%</li><br>")
+print("Overall Positive Sentiment")
+print("Positive Sentiment Percentage = " + str(100 * NBResult.count('positive') / len(NBResult)) + "%")
+print("Negative Sentiment Percentage = " + str(100 * NBResult.count('negative') / len(NBResult)) + "%")
+print("Neutral percentage = " + str(100 * NBResult.count('neutral') / len(NBResult)) + "%")

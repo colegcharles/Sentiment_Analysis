@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
 
@@ -31,7 +33,7 @@
 
 <div>
 
-	Welcome to the sentiment analysis tool. Below, you can type in any company name and see the current sentiment analysis of the past 1000 tweets refering the that company. The sentiment analysis is calculated by a custom machine learning algorithm. once you search values will be calculated within 30 seconds.
+	Welcome to the sentiment analysis tool. Below, you can type in any company name or product and see the current sentiment analysis of the past 1000 tweets refering the that company. The sentiment analysis is calculated by a custom machine learning algorithm. once you search values will be calculated within 30 seconds.
 
 </div>
 <form action='' method='get'>
@@ -40,16 +42,20 @@
   <button class="btn btn-dark" type="submit">Search</button> 
 </form>
 
+
+
 <?php
 
 if (isset($_GET["searchWord"])) {
-  $command = escapeshellcmd('python3 TestNB.py '.$_GET["searchWord"].' 100');
+  $command = escapeshellcmd('python3 testSent.py "'.$_GET["searchWord"].'"');
   $output = shell_exec($command);
-  echo '<div>'.$output.'</div>';
+
+  echo "<img src=\"./graphs/".$_GET["searchWord"]."BarGraph.png\" alt=\"smiley face\">";
+  echo "<img src=\"./graphs/".$_GET["searchWord"]."LineGraph.png\" alt=\"smiley face\">";
+  echo "<a href='./Data/".$_GET["searchWord"]."Data.csv' download>download the processed data</a>";
+  
 }
-
 ?>
-
 
 	
 </body>
