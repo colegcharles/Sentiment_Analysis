@@ -1,0 +1,18 @@
+new data = 9/10;
+old data = 6/10;
+^tacobell
+
+old data = 5/10;
+new data = 8/10;
+^wendys
+
+
+old data = 6/10;
+new data = 8/10;
+^jordan
+
+based on percentages above, the newer data analyses has produced the highest level of accuracy.
+
+
+
+ 

@@ -50,9 +50,10 @@ if (isset($_GET["searchWord"])) {
   $command = escapeshellcmd('python3 testSent.py "'.$_GET["searchWord"].'"');
   $output = shell_exec($command);
 
-  echo "<img src=\"./graphs/".$_GET["searchWord"]."BarGraph.png\" alt=\"smiley face\">";
-  echo "<img src=\"./graphs/".$_GET["searchWord"]."LineGraph.png\" alt=\"smiley face\">";
-  echo "<a href='./Data/".$_GET["searchWord"]."Data.csv' download>download the processed data</a>";
+  echo "<img src=\"./graphs/".$_GET["searchWord"]."PieGraphnew.png\" alt=\"smiley face\">";
+  echo "<img src=\"./graphs/".$_GET["searchWord"]."ScatterPlotnew.png\" alt=\"smiley face\">";
+  echo "<img src=\"./graphs/".$_GET["searchWord"]."LineGraphnew.png\" alt=\"smiley face\">";
+  echo "<a href='./Data/".$_GET["searchWord"]."Datanew.csv' download>download the processed data</a>";
   
 }
 ?>
